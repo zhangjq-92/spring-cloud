@@ -30,3 +30,13 @@
 /seata-account-service2003/target/
 /seata-order-service2001/target/
 /seata-storage-service2002/target/
+/.idea/.gitignore
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/spring-cloud.iml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
