@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.cloud.mapper.PaymentMapper">
+
+    <resultMap id="baseResult" type="com.example.cloud.entity.Payment">
+        <result property="id" column="id"/>
+        <result property="serial" column="serial"/>
+    </resultMap>
+
+    <insert id="savePayment">
+        insert into payment ('serila') value (#{serial})
+    </insert>
+
+    <select id="getPaymentById" resultMap="baseResult">
+        select id, serial from payment where id = #{id}
+    </select>
+</mapper>

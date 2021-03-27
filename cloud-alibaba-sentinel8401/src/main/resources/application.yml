@@ -1,0 +1,22 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: cloud-sentinel-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://123.56.74.135:8818
+    sentinel:
+      transport:
+        dashboard: http://192.168.124.10:8080
+#        dashboard: http://81.70.203.183:8080
+        port: 8719
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

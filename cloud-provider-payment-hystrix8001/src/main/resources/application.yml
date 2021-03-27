@@ -1,0 +1,42 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /payment-service
+
+spring:
+  application:
+    name: payment-service
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://123.56.74.135:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: admin
+    username: admin
+    filters: stat
+    initialSize: 2
+    maxActive: 300
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 200
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.cloud.entity
+
+eureka:
+  client:
+    #false表示不向服务注册中心注册自己
+    register-with-eureka: true
+    #false表示自己就是服务注册中心，不需要去检索服务
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: payment-service-8001
+    prefer-ip-address: true

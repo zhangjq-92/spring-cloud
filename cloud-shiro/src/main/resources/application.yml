@@ -1,0 +1,53 @@
+server:
+  port: 8500
+  servlet:
+    context-path: /shiro
+
+spring:
+  application:
+    name: shiro
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: http://localhost:8848
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://123.56.74.135:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: admin
+    username: admin
+    filters: stat
+    initialSize: 2
+    maxActive: 300
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 200
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.cloud.entity
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    com.example.cloud.mapper: debug
+#    org.apache.shiro: debug
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+

@@ -1,0 +1,41 @@
+server:
+  port: 8004
+  servlet:
+    context-path: /payment-service
+
+spring:
+  application:
+    name: payment-service
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://123.56.74.135:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: admin
+    username: admin
+    filters: stat
+    initialSize: 2
+    maxActive: 300
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 200
+  cloud:
+    consul:
+      host: 123.56.74.135
+      port: 8500
+      discovery:
+        healthCheckPath: /health
+        healthCheckInterval: 15s
+        instance-id: order-service
+        service-name: ${spring.application.name}
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.cloud.entity

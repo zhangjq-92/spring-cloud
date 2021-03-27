@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.cloud.mapper.PermissionMapper">
+
+    <resultMap id="permissionResult" type="com.example.cloud.entity.Permission">
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="description" column="description"/>
+        <result property="url" column="url"/>
+    </resultMap>
+
+    <select id="findByUserName" resultMap="permissionResult">
+        select * from permission per join role_permission rp on
+         rp.permission_id = per.id
+         join user_role ur on
+         ur.id = rp.role_id join
+         test_user tu on
+         tu.id = ur.user_id and tu.user_nama = #{userName}
+    </select>
+
+    <select id="findByUserId" resultMap="permissionResult">
+        select per.id, per.code, per.description, per.url
+            from permission per
+                join role_permission rp
+                    on per.id = rp.permission_id
+                join user_role ur
+                    on ur.role_id = rp.role_id
+        where ur.user_id = #{userId}
+    </select>
+</mapper>
